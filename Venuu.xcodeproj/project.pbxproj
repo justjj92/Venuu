@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		281F302228D1A85C001E46AF /* VenuuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281F302128D1A85C001E46AF /* VenuuApp.swift */; };
+		281F302428D1A85C001E46AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281F302328D1A85C001E46AF /* ContentView.swift */; };
+		281F302628D1A862001E46AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281F302528D1A861001E46AF /* Assets.xcassets */; };
+		281F302928D1A862001E46AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281F302828D1A862001E46AF /* Preview Assets.xcassets */; };
+		281F303328D1A862001E46AF /* VenuuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281F303228D1A862001E46AF /* VenuuTests.swift */; };
+		281F303D28D1A862001E46AF /* VenuuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281F303C28D1A862001E46AF /* VenuuUITests.swift */; };
+		281F303F28D1A862001E46AF /* VenuuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281F303E28D1A862001E46AF /* VenuuUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		281F302F28D1A862001E46AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 281F301628D1A85C001E46AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 281F301D28D1A85C001E46AF;
+			remoteInfo = Venuu;
+		};
+		281F303928D1A862001E46AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 281F301628D1A85C001E46AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 281F301D28D1A85C001E46AF;
+			remoteInfo = Venuu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		281F301E28D1A85C001E46AF /* Venuu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venuu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		281F302128D1A85C001E46AF /* VenuuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuuApp.swift; sourceTree = "<group>"; };
+		281F302328D1A85C001E46AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		281F302528D1A861001E46AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		281F302828D1A862001E46AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		281F302E28D1A862001E46AF /* VenuuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenuuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281F303228D1A862001E46AF /* VenuuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuuTests.swift; sourceTree = "<group>"; };
+		281F303828D1A862001E46AF /* VenuuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenuuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281F303C28D1A862001E46AF /* VenuuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuuUITests.swift; sourceTree = "<group>"; };
+		281F303E28D1A862001E46AF /* VenuuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuuUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		281F301B28D1A85C001E46AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281F302B28D1A862001E46AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281F303528D1A862001E46AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		281F301528D1A85C001E46AF = {
+			isa = PBXGroup;
+			children = (
+				281F302028D1A85C001E46AF /* Venuu */,
+				281F303128D1A862001E46AF /* VenuuTests */,
+				281F303B28D1A862001E46AF /* VenuuUITests */,
+				281F301F28D1A85C001E46AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		281F301F28D1A85C001E46AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				281F301E28D1A85C001E46AF /* Venuu.app */,
+				281F302E28D1A862001E46AF /* VenuuTests.xctest */,
+				281F303828D1A862001E46AF /* VenuuUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		281F302028D1A85C001E46AF /* Venuu */ = {
+			isa = PBXGroup;
+			children = (
+				281F302128D1A85C001E46AF /* VenuuApp.swift */,
+				281F302328D1A85C001E46AF /* ContentView.swift */,
+				281F302528D1A861001E46AF /* Assets.xcassets */,
+				281F302728D1A862001E46AF /* Preview Content */,
+			);
+			path = Venuu;
+			sourceTree = "<group>";
+		};
+		281F302728D1A862001E46AF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				281F302828D1A862001E46AF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		281F303128D1A862001E46AF /* VenuuTests */ = {
+			isa = PBXGroup;
+			children = (
+				281F303228D1A862001E46AF /* VenuuTests.swift */,
+			);
+			path = VenuuTests;
+			sourceTree = "<group>";
+		};
+		281F303B28D1A862001E46AF /* VenuuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				281F303C28D1A862001E46AF /* VenuuUITests.swift */,
+				281F303E28D1A862001E46AF /* VenuuUITestsLaunchTests.swift */,
+			);
+			path = VenuuUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		281F301D28D1A85C001E46AF /* Venuu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281F304228D1A862001E46AF /* Build configuration list for PBXNativeTarget "Venuu" */;
+			buildPhases = (
+				281F301A28D1A85C001E46AF /* Sources */,
+				281F301B28D1A85C001E46AF /* Frameworks */,
+				281F301C28D1A85C001E46AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Venuu;
+			productName = Venuu;
+			productReference = 281F301E28D1A85C001E46AF /* Venuu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		281F302D28D1A862001E46AF /* VenuuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281F304528D1A862001E46AF /* Build configuration list for PBXNativeTarget "VenuuTests" */;
+			buildPhases = (
+				281F302A28D1A862001E46AF /* Sources */,
+				281F302B28D1A862001E46AF /* Frameworks */,
+				281F302C28D1A862001E46AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				281F303028D1A862001E46AF /* PBXTargetDependency */,
+			);
+			name = VenuuTests;
+			productName = VenuuTests;
+			productReference = 281F302E28D1A862001E46AF /* VenuuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		281F303728D1A862001E46AF /* VenuuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281F304828D1A862001E46AF /* Build configuration list for PBXNativeTarget "VenuuUITests" */;
+			buildPhases = (
+				281F303428D1A862001E46AF /* Sources */,
+				281F303528D1A862001E46AF /* Frameworks */,
+				281F303628D1A862001E46AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				281F303A28D1A862001E46AF /* PBXTargetDependency */,
+			);
+			name = VenuuUITests;
+			productName = VenuuUITests;
+			productReference = 281F303828D1A862001E46AF /* VenuuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		281F301628D1A85C001E46AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					281F301D28D1A85C001E46AF = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					281F302D28D1A862001E46AF = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 281F301D28D1A85C001E46AF;
+					};
+					281F303728D1A862001E46AF = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 281F301D28D1A85C001E46AF;
+					};
+				};
+			};
+			buildConfigurationList = 281F301928D1A85C001E46AF /* Build configuration list for PBXProject "Venuu" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 281F301528D1A85C001E46AF;
+			productRefGroup = 281F301F28D1A85C001E46AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				281F301D28D1A85C001E46AF /* Venuu */,
+				281F302D28D1A862001E46AF /* VenuuTests */,
+				281F303728D1A862001E46AF /* VenuuUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		281F301C28D1A85C001E46AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281F302928D1A862001E46AF /* Preview Assets.xcassets in Resources */,
+				281F302628D1A862001E46AF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281F302C28D1A862001E46AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281F303628D1A862001E46AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		281F301A28D1A85C001E46AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281F302428D1A85C001E46AF /* ContentView.swift in Sources */,
+				281F302228D1A85C001E46AF /* VenuuApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281F302A28D1A862001E46AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281F303328D1A862001E46AF /* VenuuTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281F303428D1A862001E46AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281F303F28D1A862001E46AF /* VenuuUITestsLaunchTests.swift in Sources */,
+				281F303D28D1A862001E46AF /* VenuuUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		281F303028D1A862001E46AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 281F301D28D1A85C001E46AF /* Venuu */;
+			targetProxy = 281F302F28D1A862001E46AF /* PBXContainerItemProxy */;
+		};
+		281F303A28D1A862001E46AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 281F301D28D1A85C001E46AF /* Venuu */;
+			targetProxy = 281F303928D1A862001E46AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		281F304028D1A862001E46AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		281F304128D1A862001E46AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		281F304328D1A862001E46AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Venuu/Preview Content\"";
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinJordan.Venuu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		281F304428D1A862001E46AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Venuu/Preview Content\"";
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinJordan.Venuu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		281F304628D1A862001E46AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinJordan.VenuuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Venuu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Venuu";
+			};
+			name = Debug;
+		};
+		281F304728D1A862001E46AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinJordan.VenuuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Venuu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Venuu";
+			};
+			name = Release;
+		};
+		281F304928D1A862001E46AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinJordan.VenuuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Venuu;
+			};
+			name = Debug;
+		};
+		281F304A28D1A862001E46AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustinJordan.VenuuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Venuu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		281F301928D1A85C001E46AF /* Build configuration list for PBXProject "Venuu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281F304028D1A862001E46AF /* Debug */,
+				281F304128D1A862001E46AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281F304228D1A862001E46AF /* Build configuration list for PBXNativeTarget "Venuu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281F304328D1A862001E46AF /* Debug */,
+				281F304428D1A862001E46AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281F304528D1A862001E46AF /* Build configuration list for PBXNativeTarget "VenuuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281F304628D1A862001E46AF /* Debug */,
+				281F304728D1A862001E46AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281F304828D1A862001E46AF /* Build configuration list for PBXNativeTarget "VenuuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281F304928D1A862001E46AF /* Debug */,
+				281F304A28D1A862001E46AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 281F301628D1A85C001E46AF /* Project object */;
+}
