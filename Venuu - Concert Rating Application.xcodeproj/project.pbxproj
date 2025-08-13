@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		28A07E482E4CF041006D0126 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28A07E322E4CF03F006D0126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28A07E392E4CF03F006D0126;
+			remoteInfo = "Venuu - Concert Rating Application";
+		};
+		28A07E522E4CF041006D0126 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28A07E322E4CF03F006D0126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28A07E392E4CF03F006D0126;
+			remoteInfo = "Venuu - Concert Rating Application";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28A07E3A2E4CF03F006D0126 /* Venuu - Concert Rating Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Venuu - Concert Rating Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A07E472E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Venuu - Concert Rating ApplicationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A07E512E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Venuu - Concert Rating ApplicationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		28A07E3C2E4CF03F006D0126 /* Venuu - Concert Rating Application */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Venuu - Concert Rating Application";
+			sourceTree = "<group>";
+		};
+		28A07E4A2E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Venuu - Concert Rating ApplicationTests";
+			sourceTree = "<group>";
+		};
+		28A07E542E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Venuu - Concert Rating ApplicationUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28A07E372E4CF03F006D0126 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28A07E442E4CF041006D0126 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28A07E4E2E4CF041006D0126 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28A07E312E4CF03F006D0126 = {
+			isa = PBXGroup;
+			children = (
+				28A07E3C2E4CF03F006D0126 /* Venuu - Concert Rating Application */,
+				28A07E4A2E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests */,
+				28A07E542E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests */,
+				28A07E3B2E4CF03F006D0126 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28A07E3B2E4CF03F006D0126 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28A07E3A2E4CF03F006D0126 /* Venuu - Concert Rating Application.app */,
+				28A07E472E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests.xctest */,
+				28A07E512E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28A07E392E4CF03F006D0126 /* Venuu - Concert Rating Application */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28A07E5B2E4CF041006D0126 /* Build configuration list for PBXNativeTarget "Venuu - Concert Rating Application" */;
+			buildPhases = (
+				28A07E362E4CF03F006D0126 /* Sources */,
+				28A07E372E4CF03F006D0126 /* Frameworks */,
+				28A07E382E4CF03F006D0126 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				28A07E3C2E4CF03F006D0126 /* Venuu - Concert Rating Application */,
+			);
+			name = "Venuu - Concert Rating Application";
+			packageProductDependencies = (
+			);
+			productName = "Venuu - Concert Rating Application";
+			productReference = 28A07E3A2E4CF03F006D0126 /* Venuu - Concert Rating Application.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28A07E462E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28A07E5E2E4CF041006D0126 /* Build configuration list for PBXNativeTarget "Venuu - Concert Rating ApplicationTests" */;
+			buildPhases = (
+				28A07E432E4CF041006D0126 /* Sources */,
+				28A07E442E4CF041006D0126 /* Frameworks */,
+				28A07E452E4CF041006D0126 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28A07E492E4CF041006D0126 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				28A07E4A2E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests */,
+			);
+			name = "Venuu - Concert Rating ApplicationTests";
+			packageProductDependencies = (
+			);
+			productName = "Venuu - Concert Rating ApplicationTests";
+			productReference = 28A07E472E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28A07E502E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28A07E612E4CF041006D0126 /* Build configuration list for PBXNativeTarget "Venuu - Concert Rating ApplicationUITests" */;
+			buildPhases = (
+				28A07E4D2E4CF041006D0126 /* Sources */,
+				28A07E4E2E4CF041006D0126 /* Frameworks */,
+				28A07E4F2E4CF041006D0126 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28A07E532E4CF041006D0126 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				28A07E542E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests */,
+			);
+			name = "Venuu - Concert Rating ApplicationUITests";
+			packageProductDependencies = (
+			);
+			productName = "Venuu - Concert Rating ApplicationUITests";
+			productReference = 28A07E512E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28A07E322E4CF03F006D0126 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					28A07E392E4CF03F006D0126 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					28A07E462E4CF041006D0126 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 28A07E392E4CF03F006D0126;
+					};
+					28A07E502E4CF041006D0126 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 28A07E392E4CF03F006D0126;
+					};
+				};
+			};
+			buildConfigurationList = 28A07E352E4CF03F006D0126 /* Build configuration list for PBXProject "Venuu - Concert Rating Application" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28A07E312E4CF03F006D0126;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 28A07E3B2E4CF03F006D0126 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28A07E392E4CF03F006D0126 /* Venuu - Concert Rating Application */,
+				28A07E462E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests */,
+				28A07E502E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28A07E382E4CF03F006D0126 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28A07E452E4CF041006D0126 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28A07E4F2E4CF041006D0126 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28A07E362E4CF03F006D0126 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28A07E432E4CF041006D0126 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28A07E4D2E4CF041006D0126 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28A07E492E4CF041006D0126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28A07E392E4CF03F006D0126 /* Venuu - Concert Rating Application */;
+			targetProxy = 28A07E482E4CF041006D0126 /* PBXContainerItemProxy */;
+		};
+		28A07E532E4CF041006D0126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28A07E392E4CF03F006D0126 /* Venuu - Concert Rating Application */;
+			targetProxy = 28A07E522E4CF041006D0126 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		28A07E592E4CF041006D0126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28A07E5A2E4CF041006D0126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28A07E5C2E4CF041006D0126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinJordan.Venuu---Concert-Rating-Application";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28A07E5D2E4CF041006D0126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinJordan.Venuu---Concert-Rating-Application";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		28A07E5F2E4CF041006D0126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinJordan.Venuu---Concert-Rating-ApplicationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Venuu - Concert Rating Application.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Venuu - Concert Rating Application";
+			};
+			name = Debug;
+		};
+		28A07E602E4CF041006D0126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinJordan.Venuu---Concert-Rating-ApplicationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Venuu - Concert Rating Application.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Venuu - Concert Rating Application";
+			};
+			name = Release;
+		};
+		28A07E622E4CF041006D0126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinJordan.Venuu---Concert-Rating-ApplicationUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Venuu - Concert Rating Application";
+			};
+			name = Debug;
+		};
+		28A07E632E4CF041006D0126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35LXAY27FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JustinJordan.Venuu---Concert-Rating-ApplicationUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Venuu - Concert Rating Application";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28A07E352E4CF03F006D0126 /* Build configuration list for PBXProject "Venuu - Concert Rating Application" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28A07E592E4CF041006D0126 /* Debug */,
+				28A07E5A2E4CF041006D0126 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28A07E5B2E4CF041006D0126 /* Build configuration list for PBXNativeTarget "Venuu - Concert Rating Application" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28A07E5C2E4CF041006D0126 /* Debug */,
+				28A07E5D2E4CF041006D0126 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28A07E5E2E4CF041006D0126 /* Build configuration list for PBXNativeTarget "Venuu - Concert Rating ApplicationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28A07E5F2E4CF041006D0126 /* Debug */,
+				28A07E602E4CF041006D0126 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28A07E612E4CF041006D0126 /* Build configuration list for PBXNativeTarget "Venuu - Concert Rating ApplicationUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28A07E622E4CF041006D0126 /* Debug */,
+				28A07E632E4CF041006D0126 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28A07E322E4CF03F006D0126 /* Project object */;
+}
