@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		287502A12E53DA3100683DD6 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 287502A02E53DA3100683DD6 /* Supabase */; };
+		287502A32E53DA3D00683DD6 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 287502A22E53DA3D00683DD6 /* PostgREST */; };
+		287502A52E53DA5200683DD6 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 287502A42E53DA5200683DD6 /* Auth */; };
+		287502A72E53DA5200683DD6 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 287502A62E53DA5200683DD6 /* Functions */; };
+		287502A92E53DA5200683DD6 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 287502A82E53DA5200683DD6 /* Realtime */; };
+		287502AB2E53DA5200683DD6 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 287502AA2E53DA5200683DD6 /* Storage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		28A07E482E4CF041006D0126 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,6 +32,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		287502C52E53F2C500683DD6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		28A07E3A2E4CF03F006D0126 /* Venuu - Concert Rating Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Venuu - Concert Rating Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A07E472E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Venuu - Concert Rating ApplicationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +52,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		287502BA2E53F2C500683DD6 /* Venuu Push Notification */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Venuu Push Notification";
+			sourceTree = "<group>";
+		};
 		28A07E3C2E4CF03F006D0126 /* Venuu - Concert Rating Application */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Venuu - Concert Rating Application";
@@ -52,6 +79,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287502AB2E53DA5200683DD6 /* Storage in Frameworks */,
+				287502A32E53DA3D00683DD6 /* PostgREST in Frameworks */,
+				287502A12E53DA3100683DD6 /* Supabase in Frameworks */,
+				287502A72E53DA5200683DD6 /* Functions in Frameworks */,
+				287502A92E53DA5200683DD6 /* Realtime in Frameworks */,
+				287502A52E53DA5200683DD6 /* Auth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +105,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2875029F2E53DA3100683DD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		28A07E312E4CF03F006D0126 = {
 			isa = PBXGroup;
 			children = (
 				28A07E3C2E4CF03F006D0126 /* Venuu - Concert Rating Application */,
 				28A07E4A2E4CF041006D0126 /* Venuu - Concert Rating ApplicationTests */,
 				28A07E542E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests */,
+				287502BA2E53F2C500683DD6 /* Venuu Push Notification */,
+				2875029F2E53DA3100683DD6 /* Frameworks */,
 				28A07E3B2E4CF03F006D0126 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +144,7 @@
 				28A07E362E4CF03F006D0126 /* Sources */,
 				28A07E372E4CF03F006D0126 /* Frameworks */,
 				28A07E382E4CF03F006D0126 /* Resources */,
+				287502C52E53F2C500683DD6 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -112,6 +155,12 @@
 			);
 			name = "Venuu - Concert Rating Application";
 			packageProductDependencies = (
+				287502A02E53DA3100683DD6 /* Supabase */,
+				287502A22E53DA3D00683DD6 /* PostgREST */,
+				287502A42E53DA5200683DD6 /* Auth */,
+				287502A62E53DA5200683DD6 /* Functions */,
+				287502A82E53DA5200683DD6 /* Realtime */,
+				287502AA2E53DA5200683DD6 /* Storage */,
 			);
 			productName = "Venuu - Concert Rating Application";
 			productReference = 28A07E3A2E4CF03F006D0126 /* Venuu - Concert Rating Application.app */;
@@ -195,6 +244,9 @@
 			);
 			mainGroup = 28A07E312E4CF03F006D0126;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 28A07E3B2E4CF03F006D0126 /* Products */;
 			projectDirPath = "";
@@ -400,6 +452,9 @@
 				DEVELOPMENT_TEAM = 35LXAY27FM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Venuu---Concert-Rating-Application-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use your location to remind you to save concerts you attend.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Venuu uses your location to find nearby concerts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +483,9 @@
 				DEVELOPMENT_TEAM = 35LXAY27FM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Venuu---Concert-Rating-Application-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use your location to remind you to save concerts you attend.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Venuu uses your location to find nearby concerts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +616,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		287502A02E53DA3100683DD6 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		287502A22E53DA3D00683DD6 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		287502A42E53DA5200683DD6 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		287502A62E53DA5200683DD6 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		287502A82E53DA5200683DD6 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		287502AA2E53DA5200683DD6 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2875029E2E53D94A00683DD6 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28A07E322E4CF03F006D0126 /* Project object */;
 }
