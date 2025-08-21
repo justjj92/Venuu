@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Detail + reviews for a venue.
+/// Detail + reviews for a venue (polished UI-only update).
 struct VenueDetailView: View {
     let venue: CloudStore.VenueRow
 
@@ -52,16 +52,35 @@ struct VenueDetailView: View {
         return xs.reduce(0,+) / Double(xs.count)
     }
 
+    // MARK: - Body
+
     var body: some View {
-        List {
-            header
-            summarySection
-            myReviewSection
-            leaveReviewCTA
-            reviewsSection
-            composerSection
+        ScrollView {
+            VStack(spacing: 16) {
+
+                // Error banner (if any)
+                if let e = errorText {
+                    GlassCard {
+                        HStack(alignment: .firstTextBaseline, spacing: 10) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.red)
+                            Text(e).foregroundStyle(.red)
+                            Spacer()
+                        }
+                    }
+                }
+
+                headerCard
+                summaryCard
+                myReviewCard
+                leaveReviewCTA
+                reviewsCard
+                composerCard
+            }
+            .padding(.horizontal)
+            .padding(.top, 10)
+            .padding(.bottom, 16)
         }
-        .listStyle(.insetGrouped)
         .navigationTitle(venue.name)
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
@@ -86,13 +105,21 @@ struct VenueDetailView: View {
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("venueReviewDidChange"))) { _ in
             Task { await loadAll() }
         }
+        // Global chrome
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)
+        .toolbarBackground(Theme.gradient, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 
-    // MARK: - Sections
+    // MARK: - Cards
 
-    private var header: some View {
-        Section {
-            VStack(alignment: .leading, spacing: 10) {
+    private var headerCard: some View {
+        GlassCard {
+            VStack(alignment: .leading, spacing: 12) {
+
+                // Title + Map
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(venue.name).font(.title3).bold()
@@ -102,31 +129,56 @@ struct VenueDetailView: View {
                     Button {
                         openURL(mapsURL(for: venue))
                     } label: {
-                        Label("Open in Maps", systemImage: "map")
+                        HStack(spacing: 6) {
+                            Image(systemName: "map")
+                            Text("Maps")
+                        }
+                        .font(.callout.weight(.semibold))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .stroke(Theme.gradient.opacity(0.35), lineWidth: 1)
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     }
-                    .buttonStyle(.bordered)
-                    .accessibilityHint("Open this venue in Apple Maps")
+                    .buttonStyle(.plain)
                 }
 
-                HStack(spacing: 8) {
-                    Image(systemName: "star.fill").foregroundStyle(.yellow)
+                // Overall metric
+                HStack(spacing: 10) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Theme.gradient.opacity(0.18))
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(Theme.gradient)
+                            .font(.system(size: 14, weight: .semibold))
+                    }
+                    .frame(width: 30, height: 30)
+
                     Text(formatted(overallAverage ?? venue.avg_rating))
-                        .font(.headline.monospacedDigit())
+                        .font(.title3.monospacedDigit()).bold()
                     Text("Overall").foregroundStyle(.secondary)
                     Spacer()
                     if let count = reviewsCountText() {
-                        Text(count).font(.footnote).foregroundStyle(.secondary)
+                        Text(count)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
                     }
                 }
             }
-            .padding(10)
-            .background(RoundedRectangle(cornerRadius: 14).fill(Color(.secondarySystemBackground)))
         }
     }
 
-    private var summarySection: some View {
-        Section {
+    private var summaryCard: some View {
+        GlassCard {
             VStack(alignment: .leading, spacing: 10) {
+                Text("Summary").font(.headline)
+
+                Divider().opacity(0.06)
+
+                // Each on its own line for legibility
                 CategoryRow(label: "Parking",        value: avgParking)
                 CategoryRow(label: "Staff",          value: avgStaff)
                 CategoryRow(label: "Food",           value: avgFood)
@@ -134,18 +186,17 @@ struct VenueDetailView: View {
                 CategoryRow(label: "Accessibility",  value: avgAccess)
 
                 if let s = summary, !s.isEmpty {
+                    Divider().opacity(0.06).padding(.top, 4)
                     Text(s).font(.subheadline)
                 }
             }
-            .padding(10)
-            .background(RoundedRectangle(cornerRadius: 14).fill(Color(.secondarySystemBackground)))
-        } header: { Text("Summary") }
+        }
     }
 
     private var leaveReviewCTA: some View {
         Group {
             if signedIn, myReview == nil, !showComposer {
-                Section {
+                GlassCard {
                     BlueWideButton(title: "Leave a Review") {
                         prefillFrom(nil)
                         showComposer = true
@@ -155,10 +206,10 @@ struct VenueDetailView: View {
         }
     }
 
-    private var myReviewSection: some View {
+    private var myReviewCard: some View {
         Group {
             if let mine = myReview {
-                Section {
+                GlassCard {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text("Your Review").font(.headline)
@@ -166,7 +217,7 @@ struct VenueDetailView: View {
                             StarsInline(overall(of: mine))
                         }
                         if let c = mine.comment, !c.isEmpty {
-                            Text(c).lineLimit(2)
+                            Text(c).lineLimit(3)
                         }
                         HStack {
                             Button("View full review") { showDetail = mine }
@@ -181,51 +232,77 @@ struct VenueDetailView: View {
                         }
                         .buttonStyle(.borderless)
                         .font(.footnote)
+                        .padding(.top, 4)
                     }
-                    .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 14).fill(Color(.secondarySystemBackground)))
                 }
             }
         }
     }
 
-    private var reviewsSection: some View {
-        Section {
-            if loading && reviews.isEmpty {
-                ProgressView("Loading…")
-            } else if let e = errorText {
-                Text(e).foregroundStyle(.red)
-            } else if reviews.isEmpty {
-                Text("No reviews yet. Be the first!")
-                    .foregroundStyle(.secondary)
-            } else {
-                ForEach(reviews, id: \.id) { r in
-                    Button { showDetail = r } label: {
-                        VStack(alignment: .leading, spacing: 6) {
-                            HStack(alignment: .firstTextBaseline) {
-                                Text(displayName(r)).bold()
-                                Spacer()
-                                StarsInline(overall(of: r))
+    private var reviewsCard: some View {
+        GlassCard {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Text("Reviews").font(.headline)
+                    Spacer()
+                    if loading && reviews.isEmpty { ProgressView() }
+                }
+
+                if loading && reviews.isEmpty {
+                    EmptyView()
+                } else if let e = errorText {
+                    Text(e).foregroundStyle(.red)
+                } else if reviews.isEmpty {
+                    Text("No reviews yet. Be the first!")
+                        .foregroundStyle(.secondary)
+                } else {
+                    VStack(spacing: 10) {
+                        ForEach(reviews, id: \.id) { r in
+                            Button { showDetail = r } label: {
+                                HStack(alignment: .top, spacing: 12) {
+                                    // tiny gradient chip avatar
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                            .fill(Theme.gradient.opacity(0.20))
+                                        Image(systemName: "person.fill")
+                                            .foregroundStyle(Theme.gradient)
+                                            .font(.system(size: 12, weight: .semibold))
+                                    }
+                                    .frame(width: 26, height: 26)
+
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        HStack(alignment: .firstTextBaseline) {
+                                            Text(displayName(r)).bold()
+                                            Spacer()
+                                            StarsInline(overall(of: r))
+                                        }
+                                        if let c = r.comment, !c.isEmpty {
+                                            Text(c).lineLimit(2).foregroundStyle(.secondary)
+                                        } else {
+                                            Text("View full review")
+                                                .font(.footnote)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+                                }
+                                .padding(10)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                        .fill(Color(.secondarySystemBackground))
+                                )
                             }
-                            if let c = r.comment, !c.isEmpty {
-                                Text(c).lineLimit(2).foregroundStyle(.secondary)
-                            } else {
-                                Text("View full review").font(.footnote).foregroundStyle(.secondary)
-                            }
+                            .buttonStyle(.plain)
                         }
-                        .padding(10)
-                        .background(RoundedRectangle(cornerRadius: 12).fill(Color(.secondarySystemBackground)))
                     }
-                    .buttonStyle(.plain)
                 }
             }
-        } header: { Text("Reviews") }
+        }
     }
 
-    private var composerSection: some View {
+    private var composerCard: some View {
         Group {
             if showComposer {
-                Section {
+                GlassCard {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(myReview == nil ? "Leave a Review" : "Edit Review")
                             .font(.headline)
@@ -240,19 +317,16 @@ struct VenueDetailView: View {
                             .lineLimit(3, reservesSpace: true)
                             .textInputAutocapitalization(.sentences)
 
-                        HStack {
-                            Button(myReview == nil ? "Submit Review" : "Update Review") {
-                                Task { await submit() }
-                            }
-                            .buttonStyle(.borderedProminent)
+                        HStack(spacing: 10) {
+                            BlueWideButton(
+                                title: myReview == nil ? "Submit Review" : "Update Review"
+                            ) { Task { await submit() } }
 
-                            Button("Cancel") {
-                                showComposer = false
-                            }
-                            .buttonStyle(.borderless)
+                            Button("Cancel") { showComposer = false }
+                                .buttonStyle(.borderless)
                         }
+                        .padding(.top, 2)
                     }
-                    .padding(.vertical, 6)
                 }
             }
         }
@@ -397,7 +471,7 @@ private struct CategoryRow: View {
     let label: String
     let value: Double?  // nil shows "—"
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             Text(label).frame(width: 130, alignment: .leading)
             Spacer()
             StarsInline(value ?? 0)
@@ -429,7 +503,7 @@ private struct StarsPicker: View {
     }
 }
 
-// Full-screen review detail
+// Full-screen review detail (styled)
 private struct VenueReviewDetailView: View {
     let review: CloudStore.VenueReviewRead
     @Environment(\.dismiss) private var dismiss
@@ -442,29 +516,45 @@ private struct VenueReviewDetailView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    HStack {
-                        Text(review.display_name ?? review.username ?? "User").bold()
-                        Spacer()
-                        StarsInline(overall(review))
+            ScrollView {
+                VStack(spacing: 16) {
+                    GlassCard {
+                        HStack {
+                            Text(review.display_name ?? review.username ?? "User").bold()
+                            Spacer()
+                            StarsInline(overall(review))
+                        }
+                        if let c = review.comment, !c.isEmpty {
+                            Divider().opacity(0.06).padding(.vertical, 6)
+                            Text(c)
+                        }
                     }
-                    if let c = review.comment, !c.isEmpty {
-                        Text(c)
+
+                    GlassCard {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Ratings").font(.headline)
+                            Divider().opacity(0.06)
+                            CategoryRow(label: "Parking",       value: Double(review.parking))
+                            CategoryRow(label: "Staff",         value: Double(review.staff))
+                            CategoryRow(label: "Food",          value: Double(review.food))
+                            CategoryRow(label: "Sound",         value: Double(review.sound))
+                            if let a = review.access {
+                                CategoryRow(label: "Accessibility", value: Double(a))
+                            }
+                        }
                     }
                 }
-                Section("Ratings") {
-                    CategoryRow(label: "Parking",       value: Double(review.parking))
-                    CategoryRow(label: "Staff",         value: Double(review.staff))
-                    CategoryRow(label: "Food",          value: Double(review.food))
-                    CategoryRow(label: "Sound",         value: Double(review.sound))
-                    if let a = review.access {
-                        CategoryRow(label: "Accessibility", value: Double(a))
-                    }
-                }
+                .padding()
             }
             .navigationTitle("Review")
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Done") { dismiss() } } }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Done") { dismiss() } }
+            }
+            .scrollContentBackground(.hidden)
+            .background(Theme.appBackground)
+            .toolbarBackground(Theme.gradient, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
 }

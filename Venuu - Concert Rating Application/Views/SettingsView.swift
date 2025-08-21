@@ -12,58 +12,124 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    NavigationLink("Update Password") { UpdatePasswordView() }
-                    NavigationLink("Update Profile")  { UpdateProfileView() }
-                }
+            ScrollView {
+                VStack(spacing: 20) {
 
-                Section {
-                    Toggle("Dark Mode", isOn: $useDarkMode)
-                        .onChange(of: useDarkMode) { _, newVal in
-                            // apply immediately app-wide
-                            UIApplication.shared.connectedScenes
-                                .compactMap { $0 as? UIWindowScene }
-                                .flatMap { $0.windows }
-                                .forEach { $0.overrideUserInterfaceStyle = newVal ? .dark : .unspecified }
+                    // MARK: Account Card
+                    GlassCard {
+                        Text("Account")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 4)
+
+                        VStack(spacing: 0) {
+                            NavigationLink {
+                                UpdatePasswordView()
+                            } label: {
+                                SettingRow(title: "Update Password", systemImage: "key.fill")
+                            }
+                            Divider().opacity(0.06)
+
+                            NavigationLink {
+                                UpdateProfileView()
+                            } label: {
+                                SettingRow(title: "Update Profile", systemImage: "person.crop.circle.fill")
+                            }
                         }
-                }
-
-                Section {
-                    Button(role: .destructive) {
-                        showDeleteConfirm = true
-                    } label: {
-                        Text("Delete My Account Data")
+                        .padding(.top, 2)
                     }
 
-                    Button("Sign Out", role: .destructive) {
-                        Task { await auth.signOut() }
+                    // MARK: Appearance Card
+                    GlassCard {
+                        Text("Appearance")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 4)
+
+                        HStack(spacing: 12) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill(Theme.gradient.opacity(0.20))
+                                Image(systemName: "moon.fill")
+                                    .foregroundStyle(Theme.gradient)
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .frame(width: 30, height: 30)
+
+                            Toggle("Dark Mode", isOn: $useDarkMode)
+                                .tint(Theme.gradient)
+                                .onChange(of: useDarkMode) { _, newVal in
+                                    // apply immediately app-wide
+                                    UIApplication.shared.connectedScenes
+                                        .compactMap { $0 as? UIWindowScene }
+                                        .flatMap { $0.windows }
+                                        .forEach { $0.overrideUserInterfaceStyle = newVal ? .dark : .unspecified }
+                                }
+                        }
+                        .padding(.vertical, 8)
                     }
+
+                    // MARK: Danger Zone Card
+                    GlassCard {
+                        Text("Danger Zone")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 4)
+
+                        VStack(spacing: 10) {
+                            Text("This removes your reviews, votes, saved concerts and profile. Your auth account (email) remains.")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                            Button(role: .destructive) {
+                                showDeleteConfirm = true
+                            } label: {
+                                HStack {
+                                    Image(systemName: "trash.fill")
+                                    Text("Delete My Account Data")
+                                    Spacer()
+                                }
+                                .padding(.vertical, 10)
+                                .contentShape(Rectangle())
+                            }
+                        }
+                    }
+
+                    Spacer(minLength: 24)
                 }
+                .padding()
             }
             .navigationTitle("Settings")
-            .confirmationDialog(
-                "Delete your data?",
-                isPresented: $showDeleteConfirm,
-                titleVisibility: .visible
-            ) {
-                if deleting {
-                    Button("Deleting…") {}.disabled(true)
-                } else {
-                    Button("Delete My Data", role: .destructive) {
-                        Task { await deleteMyData() }
-                    }
-                    Button("Cancel", role: .cancel) {}
-                }
-            } message: {
-                Text("This removes your reviews, votes, saved concerts and profile. Your auth account (email) remains.")
-            }
-            .alert("Delete failed", isPresented: .constant(deleteError != nil)) {
-                Button("OK") { deleteError = nil }
-            } message: {
-                Text(deleteError ?? "")
-            }
         }
+        // Confirm delete flow
+        .confirmationDialog(
+            "Delete your data?",
+            isPresented: $showDeleteConfirm,
+            titleVisibility: .visible
+        ) {
+            if deleting {
+                Button("Deleting…") {}.disabled(true)
+            } else {
+                Button("Delete My Data", role: .destructive) {
+                    Task { await deleteMyData() }
+                }
+                Button("Cancel", role: .cancel) {}
+            }
+        } message: {
+            Text("This removes your reviews, votes, saved concerts and profile. Your auth account (email) remains.")
+        }
+        .alert("Delete failed", isPresented: .constant(deleteError != nil)) {
+            Button("OK") { deleteError = nil }
+        } message: {
+            Text(deleteError ?? "")
+        }
+        // Global chrome
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)
+        .toolbarBackground(Theme.gradient, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 
     private func deleteMyData() async {
@@ -75,6 +141,35 @@ struct SettingsView: View {
         } catch {
             deleteError = error.localizedDescription
         }
+    }
+}
+
+// MARK: - Polished Row (matches Profile style)
+
+private struct SettingRow: View {
+    let title: String
+    let systemImage: String
+
+    var body: some View {
+        HStack(spacing: 12) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(Theme.gradient.opacity(0.20))
+                Image(systemName: systemImage)
+                    .foregroundStyle(Theme.gradient)
+                    .font(.system(size: 14, weight: .semibold))
+            }
+            .frame(width: 30, height: 30)
+
+            Text(title)
+                .font(.body)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
+        }
+        .contentShape(Rectangle())
+        .padding(.vertical, 10)
     }
 }
 
@@ -90,30 +185,42 @@ struct UpdatePasswordView: View {
 
     var body: some View {
         List {
-            Section("Change Password") {
-                SecureField("New password (min 6)", text: $newPass1)
-                    .textContentType(.newPassword)
-                SecureField("Confirm new password", text: $newPass2)
-                    .textContentType(.newPassword)
+            Section {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Change Password")
+                        .font(.headline)
 
-                BlueWideButton(
-                    title: "Update Password",
-                    isBusy: changing,
-                    isDisabled: !canChange
-                ) {
-                    Task { await changePassword() }
+                    SecureField("New password (min 6)", text: $newPass1)
+                        .textContentType(.newPassword)
+
+                    SecureField("Confirm new password", text: $newPass2)
+                        .textContentType(.newPassword)
+
+                    BlueWideButton(
+                        title: "Update Password",
+                        isBusy: changing,
+                        isDisabled: !canChange
+                    ) { Task { await changePassword() } }
+
+                    if let s = success { Text(s).font(.footnote).foregroundStyle(.green) }
+                    if let e = error { Text(e).font(.footnote).foregroundStyle(.red) }
                 }
-
-                if let s = success { Text(s).font(.footnote).foregroundStyle(.green) }
-                if let e = error { Text(e).font(.footnote).foregroundStyle(.red) }
+                .padding(.vertical, 4)
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)
         .navigationTitle("Update Password")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Done") { dismiss() }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)              // behind list
+        .toolbarBackground(Theme.gradient, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 
     private var canChange: Bool {
@@ -151,33 +258,38 @@ struct UpdateProfileView: View {
 
     var body: some View {
         List {
-            Section("Profile") {
-                TextField("Display name", text: $displayName)
-                    .textInputAutocapitalization(.words)
+            Section {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Profile")
+                        .font(.headline)
 
-                HStack(spacing: 8) {
-                    TextField("Username", text: $username)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
+                    TextField("Display name", text: $displayName)
+                        .textInputAutocapitalization(.words)
 
-                    if let ok = usernameOK {
-                        Image(systemName: ok ? "checkmark.seal.fill" : "xmark.seal.fill")
-                            .foregroundStyle(ok ? .green : .red)
+                    HStack(spacing: 8) {
+                        TextField("Username", text: $username)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                        if let ok = usernameOK {
+                            Image(systemName: ok ? "checkmark.seal.fill" : "xmark.seal.fill")
+                                .foregroundStyle(ok ? .green : .red)
+                        }
                     }
-                }
 
-                BlueWideButton(
-                    title: "Save",
-                    isBusy: saving,
-                    isDisabled: !canSave
-                ) {
-                    Task { await save() }
-                }
+                    BlueWideButton(
+                        title: "Save",
+                        isBusy: saving,
+                        isDisabled: !canSave
+                    ) { Task { await save() } }
 
-                if let s = success { Text(s).font(.footnote).foregroundStyle(.green) }
-                if let e = error { Text(e).font(.footnote).foregroundStyle(.red) }
+                    if let s = success { Text(s).font(.footnote).foregroundStyle(.green) }
+                    if let e = error { Text(e).font(.footnote).foregroundStyle(.red) }
+                }
+                .padding(.vertical, 4)
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)
         .navigationTitle("Update Profile")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -201,7 +313,7 @@ struct UpdateProfileView: View {
                 displayName = p.display_name ?? ""
                 username = p.username ?? ""
                 originalUsername = username
-                await validateUsername(username) // seed indicator
+                await validateUsername(username)
             }
         } catch {
             self.error = error.localizedDescription
@@ -211,7 +323,6 @@ struct UpdateProfileView: View {
     private func validateUsername(_ name: String) async {
         guard !name.isEmpty else { usernameOK = nil; return }
         do {
-            // Allow keeping your current username
             if name == originalUsername {
                 usernameOK = true; return
             }

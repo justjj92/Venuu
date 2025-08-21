@@ -73,6 +73,12 @@ struct MyConcertsView: View {
                 Button("OK") { unsaveError = nil }
             } message: { Text(unsaveError ?? "") }
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)              // behind list
+        .toolbarBackground(Theme.gradient, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+
     }
 
     // MARK: - Sync

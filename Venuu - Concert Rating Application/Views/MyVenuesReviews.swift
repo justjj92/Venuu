@@ -75,6 +75,12 @@ struct MyVenuesReviews: View {
             .navigationDestination(item: $pushVenue) { v in
                 VenueDetailView(venue: v)
             }
+            .scrollContentBackground(.hidden)
+            .background(Theme.appBackground)              // behind list
+            .toolbarBackground(Theme.gradient, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+
 
             .task(id: auth.session?.user.id.uuidString) { await reload() }
             .onAppear { Task { await reload() } }

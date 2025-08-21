@@ -130,6 +130,12 @@ struct SearchView: View {
         .sheet(isPresented: $showLogin) {
             LoginSheet().environmentObject(auth)
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)              // behind list
+        .toolbarBackground(Theme.gradient, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+
     }
 
     // MARK: Computed

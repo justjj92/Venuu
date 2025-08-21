@@ -87,8 +87,15 @@ struct MyReviewsView: View {
             } message: {
                 Text("This removes the review for everyone on this setlist.")
             }
+            .scrollContentBackground(.hidden)
+            .background(Theme.appBackground)              // behind list
+            .toolbarBackground(Theme.gradient, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+
         }
     }
+    
 
     // MARK: Data
     private func reload() async {

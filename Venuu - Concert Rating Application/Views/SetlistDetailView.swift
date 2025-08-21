@@ -58,7 +58,13 @@ struct SetlistDetailView: View {
             ToolbarItem(placement: .keyboard) {
                 Button("Done") { hideKeyboard() }
             }
+            
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.appBackground)              // behind list
+        .toolbarBackground(Theme.gradient, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         .task { await initialLoad() }
         .sheet(isPresented: $showLogin) { LoginSheet().environmentObject(auth) }
     }

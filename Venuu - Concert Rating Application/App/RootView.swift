@@ -26,8 +26,15 @@ struct HomeView: View {
                                    systemImage: "newspaper",
                                    description: Text("Music news & posts coming soon."))
                 .navigationTitle("Home")
+                .scrollContentBackground(.hidden)
+                .background(Theme.appBackground)              // behind list
+                .toolbarBackground(Theme.gradient, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarColorScheme(.dark, for: .navigationBar)
+
         }
     }
+    
 }
 
 // Concerts tab = your search screen

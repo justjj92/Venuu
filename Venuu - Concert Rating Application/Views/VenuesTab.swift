@@ -92,6 +92,12 @@ struct VenuesTab: View {
             .navigationDestination(item: $pushVenue) { v in
                 VenueLoaderScreen(apiVenue: v)   // Bridges API venue → Cloud row, then shows detail
             }
+            .scrollContentBackground(.hidden)
+            .background(Theme.appBackground)              // behind list
+            .toolbarBackground(Theme.gradient, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+
         }
     }
 
@@ -181,16 +187,9 @@ private struct VenueIconField: View {
     var submit: () async -> Void
 
     var body: some View {
-        HStack(spacing: 10) {
-            Image(systemName: system).foregroundStyle(.secondary)
-            TextField(placeholder, text: $text)
-                .textInputAutocapitalization(.words)
-                .disableAutocorrection(true)
-                .onSubmit { Task { await submit() } }
+        RoundedIconField(system: system, placeholder: placeholder, text: $text) {
+            Task { await submit() }
         }
-        .padding(12)
-        .background(RoundedRectangle(cornerRadius: 12).fill(Color(.systemBackground)))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.primary.opacity(0.08)))
     }
 }
 
@@ -209,32 +208,48 @@ private struct VenueRowCell: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(v.name).font(.headline)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 6)
-                .background(Color.primary.opacity(0.06))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+            HStack(spacing: 10) {
+                ZStack {
+                    Circle().fill(Theme.gradient)
+                    Image(systemName: "building.columns.fill")
+                        .foregroundStyle(.white)
+                        .font(.subheadline.weight(.semibold))
+                }
+                .frame(width: 30, height: 30)
+
+                Text(v.name)
+                    .font(.headline)
+                    .lineLimit(2)
+                    .padding(.vertical, 2)
+            }
 
             if !place.isEmpty {
-                Text(place).font(.subheadline).foregroundStyle(.secondary)
+                Text(place)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
         }
-        .padding(14)
-        .background(RoundedRectangle(cornerRadius: 16).fill(Color(.secondarySystemBackground)))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.white.opacity(0.06), lineWidth: 1))
+        .card()
     }
 }
+
 
 private struct EmptyFriendlyVenues: View {
     let title: String
     let detail: String
     var body: some View {
         VStack(spacing: 12) {
-            Image(systemName: "building.columns")
-                .font(.system(size: 40))
-                .foregroundStyle(.secondary)
+            ZStack {
+                Circle().fill(Theme.gradient.opacity(0.25)).frame(width: 80, height: 80)
+                Image(systemName: "building.columns")
+                    .font(.system(size: 32))
+                    .foregroundStyle(Theme.gradient)
+            }
             Text(title).font(.title3.weight(.semibold))
-            Text(detail).font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
+            Text(detail)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -249,10 +264,15 @@ private struct NearbyHeaderVenues: View {
             Text(tag).font(.footnote.weight(.semibold))
             Spacer()
         }
-        .padding(.horizontal, 6)
+        .padding(.horizontal, 10)
         .padding(.vertical, 6)
-        .background(Color.primary.opacity(0.05))
-        .clipShape(Capsule())
+        .background(Theme.gradient.opacity(0.15))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(Theme.gradient.opacity(0.35), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14))
         .padding(.top, 2)
     }
 }
+
