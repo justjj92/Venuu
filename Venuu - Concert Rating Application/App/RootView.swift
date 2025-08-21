@@ -9,27 +9,28 @@ struct RootView: View {
             ConcertsTab()
                 .tabItem { Label("Concerts", systemImage: "music.mic") }
 
+            VenuesTab()                                // ⟵ NEW
+                .tabItem { Label("Venues", systemImage: "building.columns") }
+
             ProfileTab()
                 .tabItem { Label("Profile", systemImage: "person.crop.circle") }
         }
     }
 }
 
-// Simple placeholder for now; you can wire your blog feed later.
+// Simple placeholder
 struct HomeView: View {
     var body: some View {
         NavigationStack {
-            ContentUnavailableView(
-                "Venuu News",
-                systemImage: "newspaper",
-                description: Text("Music news & posts coming soon.")
-            )
-            .navigationTitle("Home")
+            ContentUnavailableView("Venuu News",
+                                   systemImage: "newspaper",
+                                   description: Text("Music news & posts coming soon."))
+                .navigationTitle("Home")
         }
     }
 }
 
-// Concerts tab = your Search screen
+// Concerts tab = your search screen
 struct ConcertsTab: View {
     var body: some View {
         NavigationStack {

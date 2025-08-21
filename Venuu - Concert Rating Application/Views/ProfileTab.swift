@@ -8,7 +8,6 @@ struct ProfileTab: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
-
                     if auth.isSignedIn, let p = auth.profile {
                         GlassCard {
                             // Header
@@ -24,8 +23,7 @@ struct ProfileTab: View {
                                         Image(systemName: "checkmark.seal.fill")
                                             .foregroundStyle(.green)
                                         Text("Signed in")
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
+                                            .font(.caption).foregroundStyle(.secondary)
                                     }
                                     .padding(.top, 2)
                                 }
@@ -34,40 +32,50 @@ struct ProfileTab: View {
 
                             Divider().padding(.vertical, 8)
 
-                            // Rows
+                            // Saved concerts
                             NavigationLink {
-                                // IMPORTANT: pass the current user id to scope local data
-                                MyConcertsView()
+                                MyConcertsHost()         // <- no-arg host
+                                    .environmentObject(auth)
                             } label: {
-                                row(title: "Saved Concerts", systemImage: "bookmark.fill")
+                                rowLabel("Saved Concerts")
                             }
 
+                            // My concert reviews
                             NavigationLink {
                                 MyReviewsView()
                             } label: {
-                                row(title: "My Reviews", systemImage: "text.bubble.fill")
+                                rowLabel("My Concert Reviews")
                             }
 
+                            // My venue reviews
                             NavigationLink {
-                                SettingsView()
-                                    .environmentObject(auth)
+                                MyVenuesReviews()
+                            } label: {
+                                rowLabel("My Venue Reviews")
+                            }
+
+                            // Settings
+                            NavigationLink {
+                                SettingsView().environmentObject(auth)
                             } label: {
                                 row(title: "Settings", systemImage: "gearshape.fill")
                             }
 
+                            // Sign out
                             Button(role: .destructive) {
                                 Task { await auth.signOut() }
                             } label: {
-                                row(title: "Sign Out", systemImage: "rectangle.portrait.and.arrow.right.fill")
-                                    .foregroundStyle(.red)
+                                HStack {
+                                    Text("Sign Out")
+                                    Spacer()
+                                }
                             }
                         }
-
                     } else {
-                        // Guest state
+                        // Signed-out card
                         GlassCard {
                             BlueWideButton(title: "Sign In / Sign Up") { showLogin = true }
-                            Text("Sign in to save concerts & leave reviews.")
+                            Text("Sign in to save concerts, review venues, and more.")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                                 .padding(.top, 6)
@@ -79,29 +87,43 @@ struct ProfileTab: View {
             .navigationTitle("Profile")
         }
         .sheet(isPresented: $showLogin) {
-            LoginSheet()
-                .environmentObject(auth)
-                .presentationDetents([.medium, .large])
-                .presentationDragIndicator(.visible)
-        }
-        // Auto-close the login sheet when a session appears
-        .onChange(of: auth.session) { _, newValue in
-            if newValue != nil { showLogin = false }
+            LoginSheet().environmentObject(auth)
         }
     }
 
-    // MARK: - Row helper (uniform style)
+    // MARK: - Row helpers
+
     private func row(title: String, systemImage: String) -> some View {
-        HStack(spacing: 12) {
-            Image(systemName: systemImage)
-                .frame(width: 22)
+        HStack {
+            Label(title, systemImage: systemImage)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .foregroundStyle(.tertiary)
+        }
+        .font(.body)
+    }
+
+    /// Back-compat helper to match older calls (`rowLabel("…")`).
+    private func rowLabel(_ title: String) -> some View {
+        HStack {
             Text(title)
             Spacer()
             Image(systemName: "chevron.right")
                 .foregroundStyle(.tertiary)
         }
         .font(.body)
-        .padding(.vertical, 6)
-        .contentShape(Rectangle())
     }
 }
+
+// Wraps MyConcertsView (no-arg) so ProfileTab stays simple.
+private struct MyConcertsHost: View {
+    @EnvironmentObject var auth: AuthVM
+    var body: some View {
+        // Your current MyConcertsView must already scope to the signed-in user internally.
+        // If you later switch back to a parameterized version, change this to:
+        // MyConcertsView(ownerId: auth.session?.user.id)
+        MyConcertsView()
+    }
+}
+
+

@@ -51,6 +51,16 @@
 		28A07E512E4CF041006D0126 /* Venuu - Concert Rating ApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Venuu - Concert Rating ApplicationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2833046B2E565018004A28B1 /* Exceptions for "Venuu - Concert Rating Application" folder in "Venuu - Concert Rating Application" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Data/API/APIClient+Venues.swift",
+			);
+			target = 28A07E392E4CF03F006D0126 /* Venuu - Concert Rating Application */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		287502BA2E53F2C500683DD6 /* Venuu Push Notification */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -59,6 +69,9 @@
 		};
 		28A07E3C2E4CF03F006D0126 /* Venuu - Concert Rating Application */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2833046B2E565018004A28B1 /* Exceptions for "Venuu - Concert Rating Application" folder in "Venuu - Concert Rating Application" target */,
+			);
 			path = "Venuu - Concert Rating Application";
 			sourceTree = "<group>";
 		};

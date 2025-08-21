@@ -15,9 +15,13 @@ struct BlueWideButton: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(LinearGradient(colors: [.blue, .indigo],
-                                         startPoint: .topLeading,
-                                         endPoint: .bottomTrailing))
+                    .fill(
+                        LinearGradient(
+                            colors: [.blue, .indigo],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
                     .overlay(
                         RoundedRectangle(cornerRadius: 22, style: .continuous)
                             .stroke(.white.opacity(0.15), lineWidth: 1)
@@ -75,6 +79,7 @@ struct RoundedField: ViewModifier {
 }
 
 extension View {
+    /// Rounded, lightly frosted input background
     func roundedField() -> some View { modifier(RoundedField()) }
 }
 
@@ -95,7 +100,13 @@ struct MusicAvatar: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(LinearGradient(colors: [.blue, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .fill(
+                    LinearGradient(
+                        colors: [.blue, .indigo],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
                 .shadow(color: .blue.opacity(0.25), radius: 10, x: 0, y: 6)
             if let ch = initial, !ch.isEmpty {
                 Text(String(ch.prefix(1)).uppercased())
@@ -108,6 +119,7 @@ struct MusicAvatar: View {
             }
         }
         .frame(width: 64, height: 64)
+        .accessibilityHidden(true)
     }
 }
 
@@ -118,5 +130,66 @@ struct SectionTitle: View {
             .font(.caption)
             .foregroundStyle(.secondary)
             .padding(.horizontal, 2)
+    }
+}
+
+// MARK: - Stars
+
+/// Inline star rating with optional half-stars and optional numeric value.
+/// Usage:
+///   StarsInline(4)
+///   StarsInline(3.5, showsNumber: true)
+struct StarsInline: View {
+    private let value: Double
+    private let maxStars: Int
+    private let showsNumber: Bool
+
+    init(_ value: Int, max: Int = 5, showsNumber: Bool = false) {
+        self.value = Double(value)
+        self.maxStars = max
+        self.showsNumber = showsNumber
+    }
+
+    init(_ value: Double, max: Int = 5, showsNumber: Bool = false) {
+        self.value = value
+        self.maxStars = max
+        self.showsNumber = showsNumber
+    }
+
+    private var clamped: Double {
+        let up = Double(maxStars)
+        return Swift.min(up, Swift.max(0, value))
+    }
+
+    private var halfRounded: Double { (clamped * 2).rounded() / 2 }
+
+    private var symbolNames: [String] {
+        (1...maxStars).map { i in
+            if halfRounded >= Double(i) {
+                return "star.fill"
+            } else if halfRounded + 0.5 == Double(i) {
+                return "star.leadinghalf.filled"
+            } else {
+                return "star"
+            }
+        }
+    }
+
+    var body: some View {
+        HStack(spacing: 2) {
+            ForEach(Array(symbolNames.enumerated()), id: \.offset) { _, name in
+                Image(systemName: name)
+            }
+            if showsNumber {
+                Text(String(format: "%.1f", clamped))
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .padding(.leading, 4)
+            }
+        }
+        .font(.caption)
+        .foregroundStyle(.yellow)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(Int(round(clamped))) out of \(maxStars) stars")
     }
 }
