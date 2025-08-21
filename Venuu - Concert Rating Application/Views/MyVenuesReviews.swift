@@ -1,6 +1,11 @@
 import SwiftUI
 
+// Post this name when a review changes (see VenueDetailView step below)
+let venueReviewDidChange = Notification.Name("venueReviewDidChange")
+
 struct MyVenuesReviews: View {
+    @EnvironmentObject private var auth: AuthVM
+
     @State private var reviews: [CloudStore.VenueReviewRead] = []
     @State private var loading = false
     @State private var errorText: String?
@@ -9,7 +14,13 @@ struct MyVenuesReviews: View {
     var body: some View {
         NavigationStack {
             Group {
-                if loading && reviews.isEmpty {
+                if !auth.isSignedIn {
+                    ContentUnavailableView(
+                        "Sign in to see your venue reviews",
+                        systemImage: "person.crop.circle.badge.exclam",
+                        description: Text("Your reviews are tied to your account.")
+                    )
+                } else if loading && reviews.isEmpty {
                     ProgressView("Loading…")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 } else if let e = errorText {
@@ -32,13 +43,27 @@ struct MyVenuesReviews: View {
                                     avg_rating: nil,
                                     reviews_count: nil
                                 )
-                            } label: { ReviewCell(r) }
+                            } label: {
+                                ReviewRow(r)
+                            }
                             .buttonStyle(.plain)
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            .swipeActions {
                                 Button(role: .destructive) {
                                     Task { await deleteReview(r.id) }
                                 } label: {
                                     Label("Delete", systemImage: "trash")
+                                }
+                            }
+                            .contextMenu {
+                                Button("Open Venue") {
+                                    pushVenue = CloudStore.VenueRow(
+                                        id: r.venue_id,
+                                        name: r.venue_name ?? "Venue",
+                                        city: r.venue_city,
+                                        state: r.venue_state,
+                                        avg_rating: nil,
+                                        reviews_count: nil
+                                    )
                                 }
                             }
                         }
@@ -50,14 +75,23 @@ struct MyVenuesReviews: View {
             .navigationDestination(item: $pushVenue) { v in
                 VenueDetailView(venue: v)
             }
-            .task { await reload() }
+
+            .task(id: auth.session?.user.id.uuidString) { await reload() }
+            .onAppear { Task { await reload() } }
             .refreshable { await reload() }
+
+            // Reload right after submit/edit/delete elsewhere
+            .onReceive(NotificationCenter.default.publisher(for: venueReviewDidChange)) { _ in
+                Task { await reload() }
+            }
         }
     }
 
     // MARK: - Data
+
     @MainActor
     private func reload() async {
+        guard auth.isSignedIn else { reviews = []; errorText = nil; return }
         loading = true; errorText = nil
         defer { loading = false }
         do {
@@ -71,30 +105,27 @@ struct MyVenuesReviews: View {
     private func deleteReview(_ id: Int64) async {
         do {
             try await CloudStore.shared.deleteMyVenueReview(id: id)
-            await reload()
+            reviews.removeAll { $0.id == id }
+            NotificationCenter.default.post(name: venueReviewDidChange, object: nil)
         } catch {
             errorText = (error as NSError).localizedDescription
         }
     }
 }
 
-// MARK: - Cell
-private struct ReviewCell: View {
+// MARK: - Row
+
+private struct ReviewRow: View {
     let r: CloudStore.VenueReviewRead
     init(_ r: CloudStore.VenueReviewRead) { self.r = r }
 
     private var overall: Double {
         var xs: [Double] = [Double(r.parking), Double(r.staff), Double(r.food), Double(r.sound)]
         if let a = r.access { xs.append(Double(a)) }
-        return xs.reduce(0, +) / max(1, Double(xs.count))
+        return xs.reduce(0, +) / Double(xs.count)
     }
-
     private var place: String {
-        [r.venue_city, r.venue_state].compactMap { $0?.nilIfEmpty }.joined(separator: ", ")
-    }
-
-    private var author: String {
-        r.display_name?.nilIfEmpty ?? r.username?.nilIfEmpty ?? "You"
+        [r.venue_city, r.venue_state].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: ", ")
     }
 
     var body: some View {
@@ -102,21 +133,16 @@ private struct ReviewCell: View {
             HStack(alignment: .firstTextBaseline) {
                 Text(r.venue_name ?? "Venue").font(.headline)
                 Spacer()
-                StarsInline(overall) // your existing tiny star view
+                StarsInline(overall)
             }
             if !place.isEmpty {
                 Text(place).font(.subheadline).foregroundStyle(.secondary)
             }
-            Text(author).font(.footnote).foregroundStyle(.secondary)
             if let c = r.comment, !c.isEmpty {
-                Text(c).lineLimit(3)
+                Text(c).lineLimit(2)
             }
         }
         .padding(12)
         .background(RoundedRectangle(cornerRadius: 12).fill(Color(.secondarySystemBackground)))
     }
-}
-
-private extension String {
-    var nilIfEmpty: String? { isEmpty ? nil : self }
 }

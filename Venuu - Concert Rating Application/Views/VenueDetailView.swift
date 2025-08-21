@@ -82,6 +82,10 @@ struct VenueDetailView: View {
         .sheet(item: $showDetail) { r in
             VenueReviewDetailView(review: r)
         }
+        // If another screen posts the same notification, reload here too.
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("venueReviewDidChange"))) { _ in
+            Task { await loadAll() }
+        }
     }
 
     // MARK: - Sections
@@ -287,6 +291,9 @@ struct VenueDetailView: View {
                 access: access > 0 ? access : nil,   // only send if > 0
                 comment: comment.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : comment
             )
+            // Notify Profile tab to refresh
+            NotificationCenter.default.post(name: Notification.Name("venueReviewDidChange"), object: nil)
+
             showComposer = false
             clearComposer()
             await loadAll()
@@ -299,9 +306,14 @@ struct VenueDetailView: View {
     private func deleteReview(_ id: Int64) async {
         do {
             try await CloudStore.shared.deleteMyVenueReview(id: id)
+
             // Optimistic local update for snappy UI
             reviews.removeAll { $0.id == id }
             showComposer = false
+
+            // Notify Profile tab to refresh
+            NotificationCenter.default.post(name: Notification.Name("venueReviewDidChange"), object: nil)
+
             // Re-summarize locally then pull fresh
             if let s = try? await AISummaryEngine.shared.summarize(venueReviews: reviews) {
                 summary = s
@@ -357,7 +369,9 @@ struct VenueDetailView: View {
     }
 
     private func displayName(_ r: CloudStore.VenueReviewRead) -> String {
-        if let me = auth.session?.user.id.uuidString, r.user_id == me { return "You" }
+        if let me = auth.session?.user.id.uuidString, r.user_id.caseInsensitiveCompare(me) == .orderedSame {
+            return "You"
+        }
         if let name = r.display_name, !name.isEmpty { return name }
         if let u = r.username, !u.isEmpty { return u }
         return "User"

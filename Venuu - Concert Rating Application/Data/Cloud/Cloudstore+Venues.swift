@@ -153,18 +153,13 @@ extension CloudStore {
 
     // Read my reviews for Profile tab (from the view, so venue_* fields are present)
     func loadMyVenueReviews() async throws -> [VenueReviewRead] {
-        guard let session = try? await supa.auth.session else { return [] }
-        return try await supa.database
-            .from("venue_reviews_app")
-            .select("""
-                id,venue_id,parking,staff,food,sound,access,comment,created_at,updated_at,
-                user_id,username,display_name,venue_name,venue_city,venue_state
-            """)
-            .filter("user_id", operator: "eq", value: session.user.id.uuidString)
-            .order("created_at", ascending: false)
+        // Server identifies the caller via auth.uid() inside the SQL; no params needed.
+        try await supa.database
+            .rpc("my_venue_reviews")
             .execute()
             .value
     }
+
 
     // Create OR Update my review (upsert on unique (user_id, venue_id))
     func submitVenueReview(
